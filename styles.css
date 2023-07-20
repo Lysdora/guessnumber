@@ -1,0 +1,12 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+#checkButton {
+    border: none;
+    padding: 5px 10px;
+    background-color: blueviolet;
+    color: white;
+    border-radius: 5px;
+}
