@@ -21,6 +21,7 @@
 // Il faut que je gere les expetions dans mon if else
 
 let number = document.querySelector("#number");
+number.textContent = "Choisir un nombre entre 1 et 5";
 const resultInput = document.querySelector("#result");
 let verifier = document.querySelector("#checkButton");
 
@@ -32,13 +33,13 @@ let checkButton = document.querySelector("#checkButton");
 function guessNumber() {
   let userInput = resultInput.value;
   userInput = +userInput;
-
+  if (userInput > 5) {
+    number.textContent = "Choisir un nombre entre 1 et 5";
+  }
   if (userInput === randomNumber) {
-    alert("Youpie");
-    alert(`Le chiffre mystere est ${randomNumber}`);
-  } else {
-    alert("NO");
-    alert(`Non, mauvaise reponse, le bon chiffre est ${randomNumber}`);
+    number.textContent = `C'est le bon chiffre ${randomNumber}`;
+  } else if (userInput !== randomNumber) {
+    number.textContent = `C'est le mauvais chiffre !`;
   }
 }
 

@@ -1,12 +1,59 @@
+:root {
+    --color-bg: #4C3D3D;
+    --color-border: #FFD95A;
+    --color-btn: #C07F00
+}
+
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+
+
 body {
     font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--color-bg);
+    color: white;
+    font-size: 16px;
+}
+
+.container {
+    max-width: 600px;
+    margin: 30px auto;
+    overflow: auto;
+    min-height: 300px;
+    border: 3px solid var(--color-border);
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+/* Font styles */
+
+h1 span {
+    display: block;
+    margin-top: 1rem;
+}
+
+.emoji {
+    font-size: 5rem;
 }
 
 
 #checkButton {
     border: none;
     padding: 5px 10px;
-    background-color: blueviolet;
+    background-color: var(--color-btn);
     color: white;
     border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    margin: 1rem auto;
+}
+
+input {
+    border: 1px solid red;
 }
