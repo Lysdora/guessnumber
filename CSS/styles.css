@@ -1,0 +1,93 @@
+:root {
+    --color-bg: #4C3D3D;
+    --color-border: #FFD95A;
+    --color-btn: #C07F00;
+    --color-white: white;
+    --color-blue: #3AA6B9;
+    --color-pink: #FF9EAA;
+    --color-mint: #C1ECE4;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #DFDBE5;
+    background-image: url("data:image/svg+xml,%3Csvg width='42' height='44' viewBox='0 0 42 44' xmlns='http://www.w3.org/2000/svg'%3E%3Cg id='Page-1' fill='none' fill-rule='evenodd'%3E%3Cg id='brick-wall' fill='%239C92AC' fill-opacity='0.4'%3E%3Cpath d='M0 0h42v44H0V0zm1 1h40v20H1V1zM0 23h20v20H0V23zm22 0h20v20H22V23z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+
+    background-color: var(--color-white);
+    color: var(--color-blue);
+    font-size: 16px;
+}
+
+.container {
+    max-width: 600px;
+    margin: 30px auto;
+    overflow: auto;
+    min-height: 300px;
+    border: 10px solid var(--color-blue);
+    background-color: var(--color-white);
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+/* Font styles */
+
+h1,
+span {
+    font-family: 'Bangers', cursive;
+    font-size: 2.8rem;
+}
+
+h1 span {
+    display: block;
+    margin-top: 1rem;
+
+}
+
+#number {
+    color: var(--color-pink);
+    font-size: 1.1rem;
+}
+
+/* Input */
+
+input {
+
+    padding: 5px 10px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    color: var(--color-pink);
+    font-weight: bold;
+    font-size: 2.5rem;
+    width: 30%;
+    text-align: center;
+    background-color: #3AA6B912;
+    border: 2px solid var(--color-mint)
+}
+
+/* Emoji */
+.emoji {
+    font-size: 5rem;
+}
+
+#checkButton {
+    border: none;
+    padding: 10px 6px;
+    background-color: var(--color-blue);
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    margin: 1rem auto;
+    width: 30%;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    font-weight: bold;
+}

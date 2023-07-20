@@ -21,26 +21,46 @@
 // Il faut que je gere les expetions dans mon if else
 
 let number = document.querySelector("#number");
-number.textContent = "Choisir un nombre entre 1 et 5";
+number.textContent = "Choose a number between 1 and 5";
 const resultInput = document.querySelector("#result");
 let verifier = document.querySelector("#checkButton");
 
-let randomNumber = Math.trunc(Math.random() * 5) + 1;
+let randomNumber = generateRandomNumber()
 console.log(randomNumber);
 
 let checkButton = document.querySelector("#checkButton");
 
+let counterEl = document.getElementById('counter')
+
+let counter = 0
+counterEl.textContent = counter
+
+
+function generateRandomNumber() {
+  return Math.trunc(Math.random() * 5) + 1
+}
+
 function guessNumber() {
+
+
   let userInput = resultInput.value;
   userInput = +userInput;
-  if (userInput > 5) {
-    number.textContent = "Choisir un nombre entre 1 et 5";
+  counterEl.textContent = counter
+  if (userInput < 1 || userInput > 5 || isNaN(userInput)) {
+    number.textContent = "Choose a number between 1 and 5";
+   
   }
-  if (userInput === randomNumber) {
-    number.textContent = `C'est le bon chiffre ${randomNumber}`;
-  } else if (userInput !== randomNumber) {
-    number.textContent = `C'est le mauvais chiffre !`;
+  else if (userInput === randomNumber) {
+    counter++
+    number.textContent = "Congratulations! You Win!"
+    randomNumber = generateRandomNumber()
+   
+  } else  {
+    counter++
+    number.textContent = `Not a good idea... !`;
+  
   }
+  counterEl.textContent = `${counter} tentative`;
 }
 
 checkButton.addEventListener("click", guessNumber);
