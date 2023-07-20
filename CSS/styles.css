@@ -90,4 +90,5 @@ input {
     font-size: 1.3rem;
     text-transform: uppercase;
     font-weight: bold;
+    touch-action: manipulation;
 }
