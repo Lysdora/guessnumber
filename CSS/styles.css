@@ -50,10 +50,23 @@ h1 span {
 
 }
 
+/* Number  */
+
 #number {
     color: var(--color-pink);
     font-size: 1.1rem;
 }
+
+.number-fade-out {
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+}
+
+.number-fade-in {
+    opacity: 1;
+    transition: opacity 0.3s ease-in;
+}
+
 
 /* Input */
 
@@ -77,6 +90,57 @@ input {
     font-size: 5rem;
 }
 
+
+
+
+/* Animation btn */
+
+.glow {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 1);
+    animation: glowAnimation 1s infinite alternate;
+}
+
+@keyframes glowAnimation {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+    }
+
+    50% {
+        box-shadow: 0 0 20px 10px rgba(255, 255, 255, 0.7);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+    }
+}
+
+/* Animation btn */
+@keyframes scaleAnimation {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.5);
+    }
+}
+
+/* btn loose won */
+
+@keyframes scaleDownAnimation {
+    from {
+        transform: scale(1.3);
+        /* Taille d'origine lorsqu'il a la classe "won" */
+    }
+
+    to {
+        transform: scale(1);
+        /* Retour à la taille d'origine */
+    }
+}
+
+/* btn */
+
 #checkButton {
     border: none;
     padding: 10px 6px;
@@ -91,4 +155,21 @@ input {
     text-transform: uppercase;
     font-weight: bold;
     touch-action: manipulation;
+}
+
+#checkButton:hover {
+    background-color: var(--color-pink);
+    color: white;
+}
+
+#checkButton.won {
+    background-color: var(--color-border);
+    color: var(--color-bg);
+    /* animation btn */
+    animation: scaleAnimation 0.5s forwards;
+}
+
+#checkButton:not(.won) {
+    animation: scaleDownAnimation 0.5s forwards;
+    animation-timing-function: ease-out;
 }

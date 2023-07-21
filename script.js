@@ -25,42 +25,55 @@ number.textContent = "Choose a number between 1 and 5";
 const resultInput = document.querySelector("#result");
 let verifier = document.querySelector("#checkButton");
 
-let randomNumber = generateRandomNumber()
+let randomNumber = generateRandomNumber();
 console.log(randomNumber);
 
 let checkButton = document.querySelector("#checkButton");
 
-let counterEl = document.getElementById('counter')
+let counterEl = document.getElementById("counter");
 
-let counter = 0
-counterEl.textContent = counter
-
+let counter = 0;
+counterEl.textContent = counter;
 
 function generateRandomNumber() {
-  return Math.trunc(Math.random() * 5) + 1
+  return Math.trunc(Math.random() * 5) + 1;
 }
 
 function guessNumber() {
-
-
   let userInput = resultInput.value;
   userInput = +userInput;
-  counterEl.textContent = counter
-  if (userInput < 1 || userInput > 5 || isNaN(userInput)) {
-    number.textContent = "Choose a number between 1 and 5";
-   
-  }
-  else if (userInput === randomNumber) {
-    counter++
-    number.textContent = "Congratulations! You Win!"
-    randomNumber = generateRandomNumber()
-   
-  } else  {
-    counter++
-    number.textContent = `Not a good idea... !`;
-  
-  }
-  counterEl.textContent = `${counter} tentative`;
+
+  counterEl.textContent = counter;
+
+  // Animation fade out
+  number.classList.add("number-fade-out");
+
+  // Animation Glow
+  checkButton.classList.add("glow");
+
+  setTimeout(() => {
+    if (userInput < 1 || userInput > 5 || isNaN(userInput)) {
+      number.textContent = "Choose a number between 1 and 5";
+    } else if (userInput === randomNumber) {
+      counter++;
+      number.textContent = "Congratulations! You Win!";
+      randomNumber = generateRandomNumber();
+
+      // add class won to btn
+      checkButton.classList.add("won");
+    } else {
+      counter++;
+      number.textContent = `Not a good idea... !`;
+
+      // remove class won from btn
+      checkButton.classList.remove("won");
+    }
+    counterEl.textContent = `${counter} tentatives`;
+    // Animation fade in
+    number.classList.remove("number-fade-out");
+    number.classList.add("number-fade-in");
+    checkButton.classList.remove("glow");
+  }, 300);
 }
 
 checkButton.addEventListener("click", guessNumber);
