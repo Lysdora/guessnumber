@@ -155,11 +155,13 @@ input {
     text-transform: uppercase;
     font-weight: bold;
     touch-action: manipulation;
+    transition: ease-in-out all 0.4s;
 }
 
 #checkButton:hover {
     background-color: var(--color-pink);
     color: white;
+    transition: ease-in-out all 0.4s;
 }
 
 #checkButton.won {
