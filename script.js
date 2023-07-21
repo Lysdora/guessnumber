@@ -35,11 +35,17 @@ let counterEl = document.getElementById("counter");
 let counter = 0;
 counterEl.textContent = counter;
 
+// Attempt
+
+let attempt = 0;
+const maxAttempt = 3;
+
 function generateRandomNumber() {
   return Math.trunc(Math.random() * 5) + 1;
 }
 
 function guessNumber() {
+  attempt = 0;
   let userInput = resultInput.value;
   userInput = +userInput;
 
@@ -48,31 +54,41 @@ function guessNumber() {
   // Animation fade out
   number.classList.add("number-fade-out");
 
-  // Animation Glow
-  checkButton.classList.add("glow");
-
   setTimeout(() => {
+    attempt++;
     if (userInput < 1 || userInput > 5 || isNaN(userInput)) {
       number.textContent = "Choose a number between 1 and 5";
     } else if (userInput === randomNumber) {
-      counter++;
       number.textContent = "Congratulations! You Win!";
+      counter++;
       randomNumber = generateRandomNumber();
-
-      // add class won to btn
-      checkButton.classList.add("won");
+      counterEl.textContent = 0;
+      number.classList.add("won");
     } else {
       counter++;
       number.textContent = `Not a good idea... !`;
-
-      // remove class won from btn
-      checkButton.classList.remove("won");
+      number.classList.remove("won");
     }
-    counterEl.textContent = `${counter} tentatives`;
+
+    if (counterEl === maxAttempt) {
+      number.textContent = "You Lose!";
+      counterEl.textContent = 0;
+    } else {
+      counterEl.textContent = `${counter} tentatives`;
+    }
+    //counterEl.textContent = `${counter} tentatives`;
     // Animation fade in
     number.classList.remove("number-fade-out");
     number.classList.add("number-fade-in");
-    checkButton.classList.remove("glow");
+
+    if (attempt === maxAttempt || counter === maxAttempt) {
+      number.textContent = "You Lose! No more attempts left.";
+      number.classList.add("won");
+      counter = 0;
+      return;
+    } else {
+      counterEl.textContent = `${counter} tentatives`;
+    }
   }, 300);
 }
 
